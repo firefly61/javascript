@@ -1,0 +1,31 @@
+/**
+ * 题目：
+ *  一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+ * 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+ * 问总共有多少条不同的路径？
+ */
+
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+let uniquePaths = (m, n) => {
+    let start = 1;
+    let route = 0;
+
+    let node = m+n-2;  //一条路径要移动的格子
+
+    for(let i = 0; i < m; i++){
+        for(let j = 0; j < n; j++){
+            start +=2;
+            if(start == node){
+                route++
+            }
+        }
+    }
+
+    return route;
+};
+
+uniquePaths(3,2);
