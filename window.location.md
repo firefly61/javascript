@@ -4,4 +4,6 @@
   
   window.location.href
   
-  window.location.relpace *
+  window.location.relpace 
+  
+  window.location.reload
