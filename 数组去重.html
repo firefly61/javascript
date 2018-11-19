@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+<body>
+<script>
+    /*一位数组去重*/
+    let arr = [2,3,4,2,3,5,6,4,3,2];
+    let unique = function (arr) {
+        let result = [];
+        arr.forEach((item) => {
+            if(result.indexOf(item) < 0) {
+                result.push(item)
+            }
+        });
+        return result;
+    };
+    unique(arr);
+
+    // 二维数组
+    let arr2 = [2,3,4,[2,3,4,5],3,5,[2,3,4,2],4,3,6,2];
+    let unique2 = function(arr){
+        let result = [];
+        arr.forEach(function(item) {
+            if (Array.isArray(item)) {
+                item.forEach(function(i) {
+                    if (result.indexOf(i) < 0) {
+                        result.push(i);
+                    }
+                });
+            } else {
+                if (result.indexOf(item) < 0) {
+                    result.push(item);
+                }
+            }
+        });
+        return result;
+    };
+    console.log(unique2(arr2));
+
+    // n维数组
+    let arr3 = [2,3,4,[2,3,[2,3,4,2],5],3,5,[2,3,[2,3,4,2],2],4,3,6,2];
+    let unique3 = function(arr) {
+        let result = [];
+        let f = function(i) {
+            i.forEach(function(item) {
+                if (Array.isArray(item)) {
+                    f(item);
+                } else {
+                    if (result.indexOf(item) < 0) {
+                        result.push(item);
+                    }
+                }
+            });
+        };
+        f(arr);
+        return result;
+    }
+    console.log(unique3(arr3)); // [2,3,4,5,6]
+</script>
+</body>
+</html>
